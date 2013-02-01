@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DailyToDoManager.Task>
+@{
+    ViewBag.Title = "Your todo list!";
+}
+<div class="tasklist">
+    <ul class="noindent">
+        @foreach (var item in Model)
+        {
+            <li class="task">
+                @Html.HiddenFor(modelItem => item.TaskId, new { @class = "taskid" })
+                <div class="taskname">
+                    @Html.DisplayFor(modelItem => item.Todo)
+                </div>
+                @*<div class="taskcompdate">
+            @Html.DisplayFor(modelItem => item.CompletionDate)
+        </div>*@
+                <div class="taskstate">
+                    @Html.HiddenFor(modelItem => item.State, new { @class = "tstate" })
+                </div>
+                <div class="taskcdate">
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </div>
+                <div class="actions">
+                    <a href="#" class="action-anchor" title="delete it">
+                        <img src="../../Content/images/del.jpg" alt="del" class="action-buttons" /></a>
+                    <a href="#" class="action-anchor-add" title="mark complete">
+                        <img src="../../Content/images/done.jpg" alt="del" class="action-buttons" /></a>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+@*<div class="taskimage">
+<img src="../../Content/images/todomainimg.png" alt="todo image" />
+</div>*@ 

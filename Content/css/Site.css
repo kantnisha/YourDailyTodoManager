@@ -1,0 +1,261 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+body {
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+}
+#main
+{
+    min-height:30em;
+}
+.taskeditor-field
+{
+    float:left;
+    margin-right:10px;
+}
+.todo .buttonp
+{
+}
+.addtask
+{
+margin-left:-50px;
+margin-top:10px;
+cursor:pointer;
+}
+.todo
+{
+    margin-top:20px;
+}
+header.head
+{
+    color:#555;
+    border-bottom:5px solid black;
+}
+.branding
+{
+    font-family:"Oswald", "arial", "serif";
+}
+.page
+{
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+    padding-bottom:10px;
+    
+}
+
+#logindisplay
+{
+    margin:5px;
+    text-align:right;
+    float:right;
+}
+
+.tasklist
+{
+    margin:30px 10px 10px 0px;
+}
+textarea.taskinput
+{
+    overflow:hidden;
+    border-width:2px;
+    border-style:solid;
+    border-radius:8px;
+    font-family:"Bitter","Arial";
+    font-weight:bold;
+}
+ul.noindent
+{
+    padding:0px;
+    margin:0px;
+}
+li.task
+{
+    margin-top:10px;
+    background-color:White;
+    color:Black;
+    width:50%;
+    padding:5px 9px 1px 5px;
+    border-width:2px 5px 2px 2px;
+    border-style:solid;
+    border-radius:8px;
+    border-right-color:red;
+    font-family:"Bitter","Arial";
+    font-weight:bold;
+    list-style:none;
+}
+
+.display-label, 
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.display-field, 
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+table {
+    border: solid 1px #e8eef4;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 5px;
+    border: solid 1px #e8eef4;
+}
+
+table th {
+    padding: 6px 5px;
+    text-align: left;
+    background-color: #e8eef4;
+    border: solid 1px #e8eef4;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+input[type="text"], 
+input[type="password"] {
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1.2em;
+    color: #444;
+    width: 200px;
+}
+
+select {
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1.2em;
+    color: #444;
+}
+
+input[type="submit"] {
+    font-size: 1.2em;
+    padding: 5px;
+}
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+.clear {
+    clear: both;
+}
+
+.error {
+    color: Red;
+}
+.display-label, 
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.display-field, 
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+.text-box {
+    width: 30em;
+}
+
+.text-box.multi-line {
+    height: 6.5em;
+}
+
+.tri-state {
+    width: 6em;
+}
+#countrysearch
+{
+    margin-bottom:10px;
+}
+footer, 
+#footer {
+    color: #999;
+    padding: 10px 0;
+    text-align: left;
+    line-height: normal;
+    margin: 0 0 30px 0;
+    font-size: .9em;
+    border-radius: 0 0 4px 4px;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-top:5px solid black;
+}
+footer p
+{
+    float:left;
+}
+.footerfb
+{
+    text-align:right;
+}
+
+.action-buttons
+{
+  margin:10px 0 0 5px ;
+  padding:0px;
+  border:none;
+  opacity:0.4;
+}
+.bright
+{
+  opacity:1;  
+}
+
+.fb-like
+{
+    display:block;
+    margin-top:10px;
+}
+
+.todoimg
+{
+    margin: 10px 0 0 200px;
+    padding:0;
+    border:none;
+}
+.taskcdate
+{
+    float:left;
+    font-size:.7em;
+    font-style:italic;
+    opacity:.8;
+    margin-top:10px;
+    padding:2px
+}
+.actions
+{
+    text-align:right;
+}
