@@ -1,4 +1,4 @@
-﻿namespace DailyToDoManager.Controllers
+﻿namespace DailyToDoManager.Dependency
 {
     using System;
     using System.Data.Entity.Infrastructure;

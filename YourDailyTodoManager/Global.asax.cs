@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using DailyToDoManager.Dependency;
 
 namespace DailyToDoManager
 {
@@ -35,6 +36,7 @@ namespace DailyToDoManager
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+            Bootstrap.ConfigureUnityContainer();
         }
     }
 }

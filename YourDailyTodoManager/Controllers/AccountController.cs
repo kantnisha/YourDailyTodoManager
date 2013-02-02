@@ -1,4 +1,4 @@
-﻿namespace DailyToDoManager.Controllers
+﻿namespace DailyToDoManager.Dependency
 {
     using System;
     using System.Web.Mvc;
