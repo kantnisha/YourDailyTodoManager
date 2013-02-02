@@ -1,17 +1,21 @@
-﻿namespace DailyToDoManager.Dependency
+﻿namespace DailyToDoManager.Controllers
 {
-    using System;
-    using System.Data.Entity.Infrastructure;
-    using System.Linq;
     using System.Web.Mvc;
     using DailyToDoManager.Attributes;
+    using DailyToDoManager.DataAccessLayer;
+    using DailyToDoManager.Entities;
 
     [Authorize]
     [NoCache]
     public class TaskController : Controller
     {
-        TododbEntities tasks = new TododbEntities();
-        
+        IToDoRepository repository;
+
+        public TaskController(IToDoRepository todoRepository)
+        {
+            this.repository = todoRepository;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -19,30 +23,19 @@
 
         public ActionResult GetAllTask()
         {
-            var alltasks = tasks.Tasks.Where(t => t.TaskUsers.FirstOrDefault().UserId == User.Identity.Name).OrderByDescending(t => t.CreatedDate).ToList();
+            var alltasks = repository.GetAllTasks(User.Identity.Name);
             return PartialView("AllTasks", alltasks);
         }
 
         [HttpPost]
         public ActionResult AddTask(string task)
         {
+            
             if (!string.IsNullOrEmpty(task))
             {
-                var taskInput = new Task();
-                taskInput.Todo = task;
-                taskInput.State = "0";
-                taskInput.CreatedDate = DateTime.Now;
-                try
-                {
-                    tasks.Tasks.Add(taskInput);
-                    tasks.SaveChanges();
-                    var taskUser = new TaskUser { TaskId = taskInput.TaskId, UserId = User.Identity.Name };
-                    tasks.TaskUsers.Add(taskUser);
-                    int i = tasks.SaveChanges();
-                }
-                catch (DbUpdateException exp)
-                { }
+                repository.AddTask(new Task { Todo = task }, User.Identity.Name);
             }
+
             return RedirectToAction("GetAllTask");
         }
 
@@ -51,20 +44,7 @@
         {
             if (taskId != null)
             {
-                var taskToDelete = tasks.Tasks.Where(t => t.TaskId == taskId).FirstOrDefault();
-                var taskUserEntry = tasks.TaskUsers.Where(t => t.TaskId == taskId).FirstOrDefault();
-                if (taskToDelete != null && taskUserEntry != null)
-                {
-                    try
-                    {
-                        tasks.TaskUsers.Remove(taskUserEntry);
-                        tasks.Tasks.Remove(taskToDelete);
-                        tasks.SaveChanges();
-                    }
-                    catch (DbUpdateConcurrencyException ex)
-                    { 
-                    }
-                }
+                repository.DeleteTask(taskId, User.Identity.Name);
             }
 
             return RedirectToAction("GetAllTask");
@@ -75,18 +55,7 @@
         {
             if (taskId != null)
             {
-                var taskToComplete = tasks.Tasks.Where(t => t.TaskId == taskId).FirstOrDefault();
-                taskToComplete.State = "1";
-                if (taskToComplete != null)
-                {
-                    try
-                    {
-                        tasks.SaveChanges();
-                    }
-                    catch (DbUpdateConcurrencyException ex)
-                    {
-                    }
-                }
+                repository.MarkTaskComplete(taskId, User.Identity.Name);
             }
 
             return RedirectToAction("GetAllTask");

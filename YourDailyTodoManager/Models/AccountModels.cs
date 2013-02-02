@@ -7,7 +7,6 @@ using System.Web.Security;
 
 namespace DailyToDoManager.Models
 {
-
     public class ChangePasswordModel
     {
         [Required]

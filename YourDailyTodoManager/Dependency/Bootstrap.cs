@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
+using DailyToDoManager.DataAccessLayer;
 
 namespace DailyToDoManager.Dependency
 {
@@ -12,7 +13,7 @@ namespace DailyToDoManager.Dependency
         public static void ConfigureUnityContainer()
         {
             IUnityContainer container=new UnityContainer();
-            
+            container.RegisterType<IToDoRepository, ToDoRepository>();
             ControllerBuilder.Current.SetControllerFactory(new UnityControllerFactory(container));
         }
     }
