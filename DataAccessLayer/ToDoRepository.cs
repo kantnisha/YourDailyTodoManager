@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DailyToDoManager.Entities;
-using System.Data.Entity.Infrastructure;
-
-namespace DailyToDoManager.DataAccessLayer
+﻿namespace DailyToDoManager.DataAccessLayer
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using DailyToDoManager.Entities;
+
     public class ToDoRepository:IToDoRepository
     {
         ToDoDbContext db = new ToDoDbContext();
@@ -33,7 +32,7 @@ namespace DailyToDoManager.DataAccessLayer
                 {
                     db.TaskUsers.Remove(taskUserEntry);
                     db.Tasks.Remove(taskToDelete);
-                    db.SaveChanges();
+                    
                     return true;
                 }
                 catch (DbUpdateConcurrencyException ex)
@@ -48,18 +47,11 @@ namespace DailyToDoManager.DataAccessLayer
         public bool MarkTaskComplete(int? id, string user)
         {
             var taskToComplete = db.Tasks.Where(t => t.TaskId == id).FirstOrDefault();
-            taskToComplete.State = "1";
+            
             if (taskToComplete != null)
             {
-                try
-                {
-                    db.SaveChanges();
-                    return true;
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    return false;
-                }
+                taskToComplete.State = "1";
+                return true;
             }
 
             return false;
@@ -72,16 +64,19 @@ namespace DailyToDoManager.DataAccessLayer
             try
             {
                 db.Tasks.Add(task);
-                db.SaveChanges();
                 var taskUser = new TaskUser { TaskId = task.TaskId, UserId = user };
                 db.TaskUsers.Add(taskUser);
-                int i = db.SaveChanges();
                 return true;
             }
             catch (DbUpdateException exp)
             {
                 return false;
             }
+        }
+
+        public void SaveDb()
+        {
+            this.db.SaveChanges();
         }
     }
 }

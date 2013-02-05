@@ -13,5 +13,6 @@ namespace DailyToDoManager.DataAccessLayer
         bool DeleteTask(int? id, string user);
         bool MarkTaskComplete(int? id, string user);
         bool AddTask(Task task, string user);
+        void SaveDb();
     }
 }

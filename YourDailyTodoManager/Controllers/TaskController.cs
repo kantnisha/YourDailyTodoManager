@@ -7,14 +7,11 @@
 
     [Authorize]
     [NoCache]
-    public class TaskController : Controller
+    public class TaskController : ToDoBaseController
     {
-        IToDoRepository repository;
-
-        public TaskController(IToDoRepository todoRepository)
-        {
-            this.repository = todoRepository;
-        }
+        public TaskController(IToDoRepository repository)
+            : base(repository)
+        { }
 
         public ActionResult Index()
         {
