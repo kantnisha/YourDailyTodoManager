@@ -1,6 +1,7 @@
 ﻿$(function () {
     getAllTasks();
-    $('.addtask').click(function () {
+    $('.addtask').click(function (evt) {
+        evt.preventDefault();
         var url = "Task/AddTask";
         var data = { task: $('.taskinput').val() };
         $.post(url, data, function (rdata) {
@@ -9,9 +10,12 @@
             $('.taskinput').val('').focus();
             $('.alltodo li.task:first').fadeOut(500).fadeIn(1000);
         });
+
+        return false;
     });
 
-    $('a.action-anchor').live('click', function () {
+    $('a.action-anchor').live('click', function (evt) {
+        evt.preventDefault();
         var url = "Task/DeleteTask";
         var param = { taskId: $(this).parent().siblings('.taskid').val() };
         $('.alltodo').attr('disabled', 'disabled');
@@ -19,11 +23,13 @@
             $('.alltodo').html(rdata);
             makeCompletedTasksGreen();
             $('.alltodo').removeAttr('disabled');
-            $('.taskinput').focus();
         });
+
+        return false;
     });
 
-    $('a.action-anchor-add').live('click', function () {
+    $('a.action-anchor-add').live('click', function (evt) {
+        evt.preventDefault();
         var $this = $(this);
         if ($this.parent().siblings('.taskstate').children('.tstate').val() !== "1") {
             var url = "Task/CompleteTask";
@@ -36,12 +42,12 @@
                     $this.parent().parent().css("border-right-color", "green");
                     moveCompletedTaskBelow($this.parent().parent());
                 }
-                $('.taskinput').focus();
             });
         }
         else {
             $this.attr("title", "already marked complete");
         }
+        return false;
     });
 
     $('img.action-buttons')
