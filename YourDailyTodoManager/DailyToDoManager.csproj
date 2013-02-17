@@ -87,6 +87,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Statics\images\ajax-loader.gif" />
     <Content Include="Statics\images\del.jpg" />
     <Content Include="Statics\images\add.jpg" />
     <Content Include="Statics\images\done.jpg" />
@@ -143,6 +144,9 @@
       <Project>{CB56EFD6-B7F9-45D8-819C-7969009CC284}</Project>
       <Name>ToDoEntities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\AjaxLoader.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
